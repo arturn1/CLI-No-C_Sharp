@@ -2,7 +2,7 @@
 using System.Net;
 using Application.Interfaces;
 
-namespace Domain.Services
+namespace Application.Services
 {
     public class HttpClientService : IHttpClientService
     {

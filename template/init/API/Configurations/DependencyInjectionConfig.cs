@@ -2,7 +2,7 @@ using IoC;
 
 namespace API.Configurations
 {
-    public static class DependecyInjectionConfig
+    public static class DependencyInjectionConfig
     {
         public static void AddIoc(this IServiceCollection services)
         {

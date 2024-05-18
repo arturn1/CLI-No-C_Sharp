@@ -10,7 +10,7 @@
     "mustache": "^4.2.0"
   },
   "name": "nocsharp",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "preferGlobal": true,
   "main": "./dist/index.js",
   "keywords": [],

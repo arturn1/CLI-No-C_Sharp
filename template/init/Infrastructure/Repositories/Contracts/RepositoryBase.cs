@@ -3,7 +3,7 @@ using Infrastructure.Data;
 using Domain.Repositories.Contracts;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repositories.Contrats
+namespace Infrastructure.Repositories.Contracts
 {
     public class RepositoryBase<T> : IRepositoryBase<T>, IDisposable where T : class
     {

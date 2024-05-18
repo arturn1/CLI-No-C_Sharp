@@ -8,7 +8,7 @@
         {
             Response = new Dictionary<string, string>()
             {
-                {"Success", "Request suceeded"},
+                {"Success", "Request succeeded"},
                 {"Failed", "Request failed"},
                 {"InternalError", "Internal server error"},
                 {"NotFound", "Resource not found"},
