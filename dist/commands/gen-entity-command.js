@@ -38,7 +38,7 @@ function setupEntityCommand(parentCommand) {
         const entityData = {
             name: capitalize_first_letter_1.StringUtils.capitalizeFirstLetter(nameEntity),
             postgres: postgres,
-            baseSkip: baseSkip,
+            baseSkip: 1,
             content: fields
         };
         (0, gen_entity_1.genEntity)(entityData);
