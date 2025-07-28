@@ -1,7 +1,7 @@
 using Domain.Entities;
 using Domain.Repositories;
 using Infrastructure.Data;
-using Infrastructure.Repositories.Contrats;
+using Infrastructure.Repositories.Contracts;
 
 namespace Infrastructure.Repositories
 {

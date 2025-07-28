@@ -3,51 +3,155 @@
 ## Descrição
 Este projeto é uma CLI (Command Line Interface) desenvolvida em TypeScript para criar e estruturar projetos C# seguindo uma arquitetura em camadas comum em aplicativos C#. A estrutura do projeto C# inclui camadas para API, Domínio e Infraestrutura, organizando claramente as responsabilidades para facilitar a manutenção e escalabilidade do código.
 
+## 🚀 Funcionalidades
+
+✅ **Criação de Projetos**: Scaffolding completo com arquitetura Clean Architecture  
+✅ **Geração de Entidades**: Com suporte a tipos complexos (`List<T>`, `Dictionary<K,V>`, `HashSet<T>`)  
+✅ **Relacionamentos**: Entidades podem referenciar outras entidades  
+✅ **Commands & Handlers**: Padrão CQRS implementado  
+✅ **Repositories**: Interfaces e implementações automáticas  
+✅ **Controllers**: APIs REST com injeção de dependência  
+✅ **Multiplataforma**: Linux, macOS e Windows  
+
 ## Dependências Principais
-commander: Biblioteca para criar interfaces de linha de comando.
-mustache: Para carregar e interpolar os arquivos template
+- **commander**: Biblioteca para criar interfaces de linha de comando
+- **mustache**: Para carregar e interpolar os arquivos template
 
-## Pré-requisitos
-Certifique-se de ter o Node.js instalado para executar a CLI.
+## 📋 Pré-requisitos
+- **Node.js** (versão 14 ou superior)
+- **npm** (incluído com Node.js)
 
-## Módulo de Instalação
-Instalação Global
+## 🛠️ Instalação
 
-Para facilitar o uso do Node Command Line Generator (nc), você pode instalá-lo globalmente e configurar as variáveis de ambiente. Siga os passos abaixo:
+### 🐧 Linux / 🍎 macOS
+```bash
+# Clone o repositório
+git clone <seu-repositorio>
+cd CLI-No-C_Sharp
 
-1. Clone o repositório para o seu sistema:
-```git clone https://seu-repositorio-aqui.git```
-
-2. Acesse o diretório do projeto:
-```cd seu-projeto```
-
-3. Instale as dependências:
-```npm install```
-
-4. Execute o script de instalação para configurar o comando global (nc) e adicionar ao PATH:
-```npm run install-global```
-
-#### Uso
-Agora, você pode usar o comando nc globalmente para gerar entidades e comandos facilmente. Aqui estão alguns exemplos:
-```
-# Criar uma entidade chamada "User" com os campos "name:string" e "age:int"
-nc g e User name:string age:int"
-```
-```
-# Criar um comando chamado "Generate" com campos opcionais e tipo de gerenciamento
-nc g command Generate [fields...] --type <typeFields> --id
+# Execute o script de instalação
+chmod +x install.sh
+./install.sh
 ```
 
-Alternativa Simplificada
-Se preferir não instalar globalmente, você pode usar o script localmente com:
-```node dist/index.js g e User name:string age:int```
+### 🪟 Windows
 
-Para uma configuração mais simplificada e para evitar a necessidade de especificar o caminho completo para o script, você pode adicionar o diretório ao PATH do seu sistema. Adicione a seguinte linha ao seu arquivo de configuração do perfil do sistema (como o .bashrc, .bash_profile, .zshrc, etc.):
-```export PATH=$PATH:/caminho/para/o/diretorio/do/script```
+**Método 1: Script Automático (Recomendado)**
+```powershell
+# PowerShell como Administrador
+PowerShell -ExecutionPolicy Bypass -File install.ps1
+```
 
-Após salvar as alterações no arquivo de configuração, recarregue o perfil do terminal ou reinicie o terminal para que as alterações entrem em vigor.
+**Método 2: Batch**
+```cmd
+# cmd como Administrador
+install.bat
+```
 
-Agora, você pode usar o comando nc de qualquer diretório no terminal. Lembre-se de ajustar "/caminho/para/o/diretorio/do/Bin" para o caminho real do diretório contendo o bat na pasta Bin
+**📖 Para instruções detalhadas do Windows:** [WINDOWS-INSTALL.md](WINDOWS-INSTALL.md)
+
+## 🚀 Primeiros Passos
+
+### Verificar Instalação
+```bash
+# Linux/macOS/Windows
+nocsharp --help
+nc --version
+```
+
+### Criar Primeiro Projeto
+```bash
+# Criar projeto
+nocsharp new MeuProjeto
+cd MeuProjeto
+
+# Gerar entidade simples
+nocsharp scaffold Usuario nome:string email:string idade:int
+
+# Gerar entidade com tipos complexos
+nocsharp scaffold Produto nome:string categorias:List<string> preco:decimal
+
+# Gerar com relacionamentos entre entidades
+nocsharp scaffold Empresa nome:string funcionarios:List<Usuario> ceo:Usuario
+```
+
+### Opções Avançadas
+```bash
+# Sem herdar de BaseEntity
+nocsharp scaffold Post titulo:string --baseSkip
+
+# Com ID management
+nocsharp scaffold Task nome:string --id
+
+# PostgreSQL com schema
+nocsharp scaffold User nome:string --postgres users:public
+```
+
+## 📖 Comandos Disponíveis
+
+| Comando | Descrição | Exemplo |
+|---------|-----------|---------|
+| `new <nome>` | Criar novo projeto | `nocsharp new MeuApp` |
+| `scaffold <entidade> [campos...]` | Gerar entidade completa | `nocsharp scaffold User nome:string` |
+| `--help` | Mostrar ajuda | `nocsharp --help` |
+| `--version` | Versão da CLI | `nocsharp --version` |
+
+### Aliases
+- `nocsharp` = `nc` (comando mais curto)
+
+## 🎯 Tipos Suportados
+
+### Tipos Primitivos
+- `string`, `int`, `long`, `decimal`, `bool`, `DateTime`, `Guid`, `char`, `byte`, `short`, `float`, `double`
+
+### Tipos Complexos
+- `List<tipo>` - Lista de elementos
+- `ICollection<tipo>` - Coleção de elementos  
+- `HashSet<tipo>` - Conjunto único de elementos
+- `Dictionary<chave,valor>` - Dicionário chave-valor
+
+### Entidades Customizadas
+- `Usuario`, `Produto`, `Empresa` - Referências a outras entidades
+- `List<Usuario>` - Lista de entidades
+- `Dictionary<Usuario,string>` - Dicionário com entidades como chave
+
+## 💡 Exemplos Práticos
+
+### Exemplo 1: E-commerce
+```bash
+# Criar projeto
+nocsharp new EcommerceApp
+cd EcommerceApp
+
+# Entidades básicas
+nocsharp scaffold Usuario nome:string email:string
+nocsharp scaffold Categoria nome:string descricao:string
+nocsharp scaffold Produto nome:string preco:decimal categoria:Categoria
+
+# Relacionamentos complexos
+nocsharp scaffold Pedido cliente:Usuario produtos:List<Produto> total:decimal data:DateTime
+nocsharp scaffold Carrinho usuario:Usuario itens:Dictionary<Produto,int>
+```
+
+### Exemplo 2: Sistema de Blog
+```bash
+nocsharp new BlogSystem
+cd BlogSystem
+
+nocsharp scaffold Autor nome:string email:string
+nocsharp scaffold Post titulo:string conteudo:string autor:Autor tags:HashSet<string>
+nocsharp scaffold Comentario texto:string post:Post autor:Autor
+```
+
+### Exemplo 3: Gestão de Projetos
+```bash
+nocsharp new ProjectManager
+cd ProjectManager
+
+nocsharp scaffold Usuario nome:string email:string
+nocsharp scaffold Projeto nome:string descricao:string membros:List<Usuario> gerente:Usuario
+nocsharp scaffold Tarefa titulo:string projeto:Projeto responsavel:Usuario prazo:DateTime
+```
 
 ## Estrutura do Projeto C#
 O projeto gerado segue a seguinte estrutura:

@@ -59,7 +59,21 @@ export function initializeProjectStructure(nomeProject: string) {
             const file = Mustache.render(elem.content, data);
 
             const fileName = elem.fileName == "Template.sln" ? `/${StringUtils.capitalizeFirstLetter(nomeProject)}.sln` : elem.target.split("/template/init")[1];
-            fs.writeFileSync(projectPath + fileName, file);
+            
+            // Verificar se o diretório de destino existe, senão criar
+            const destinationPath = projectPath + fileName;
+            const destinationDir = path.dirname(destinationPath);
+            
+            try {
+                if (!fs.existsSync(destinationDir)) {
+                    fs.mkdirSync(destinationDir, { recursive: true });
+                }
+                
+                fs.writeFileSync(destinationPath, file);
+            } catch (error) {
+                console.warn(`Aviso: Não foi possível criar o arquivo ${fileName}:`, error);
+                // Continua o processo sem parar
+            }
         })
 
         console.log(`Projeto '${StringUtils.capitalizeFirstLetter(nomeProject)}' inicializado com sucesso.`);

@@ -24,6 +24,8 @@ export function genCommand(data: Command) {
             structureConstructor: entity.structureConstructor(),
             structureEntityThis: "\n" + entity.structureEntityThis(),
             structureEntityPublic: "\n" + entity.structureEntityPublic()
+        }, {}, {
+            escape: (text) => text  // Desabilitar escape HTML
         })
 
         const currentDirectory = process.cwd();

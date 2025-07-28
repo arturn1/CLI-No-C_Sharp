@@ -40,10 +40,25 @@ export function processDirectory(directoryPath: string): ProcessResult[] {
     files.forEach((file: string) => {
         const filePath: string = path.join(directoryPath, file);
 
+        // Filtrar arquivos e diretórios de build do .NET
+        if (file === 'obj' || file === 'bin' || 
+            file.endsWith('.user') || 
+            file.endsWith('.suo') || 
+            file.includes('.vs')) {
+            return; // Pular arquivos/diretórios de build
+        }
+
         if (fs.statSync(filePath).isDirectory()) {
             results.push(...processDirectory(filePath));
         } else {
-            results.push(processFile(filePath));
+            // Filtrar arquivos específicos de build
+            if (!file.includes('.cache') && 
+                !file.includes('.AssemblyInfo') && 
+                !file.includes('.GlobalUsings') && 
+                !file.includes('.editorconfig') &&
+                !file.includes('AssemblyAttributes')) {
+                results.push(processFile(filePath));
+            }
         }
     });
 

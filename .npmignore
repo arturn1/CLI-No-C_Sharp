@@ -1,0 +1,41 @@
+# Arquivos de desenvolvimento
+src/
+*.ts
+tsconfig.json
+.git/
+.gitignore
+
+# Arquivos de build
+*.map
+*.log
+.nyc_output/
+coverage/
+
+# Arquivos de teste
+test/
+tests/
+spec/
+*.test.*
+*.spec.*
+
+# Arquivos do editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporários
+tmp/
+temp/
+*.tmp
+
+# Outros
+node_modules/
+*.tgz
+.npm/
+.eslintcache

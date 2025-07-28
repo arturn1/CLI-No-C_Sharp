@@ -14,8 +14,6 @@ import { genController } from '../services/gen-controller';
 import { genCommandInjectorBootStrapper } from '../services/gen-commandInjectorBootStrapper';
 import { genCommandApplicationDbContext } from '../services/gen-command-applicationDbContext';
 
-import accepted from '../utils/confirm';
-
 
 export function setupScaffoldCommand(program: Command) {
     program
@@ -23,20 +21,22 @@ export function setupScaffoldCommand(program: Command) {
         .alias('s')
         .description('Create Entity, Command, Handler, Repository in project')
         .option('--postgres <postgreSQLFields>', 'Specify PostgreSQL fields for the entity')
-        .option('--baseSkip', 'This command ignore Base Entity')
+        .option('--baseSkip', 'Skip inheriting from BaseEntity (default: inherits from BaseEntity)')
         .option('--id', 'Generates the file with the type of management it will have')
         .option('--noRepository', 'This command create handler in repository target')
         .action(async (nameScaffold, fields, options) => {
             let postgres: Database | undefined;
 
-            const { noRepository, id } = options;
+            const { noRepository, id, baseSkip } = options;
 
             if (options.postgres) {
                 const [table, schema] = options.postgres.split(":")
                 postgres = { table, schema };
             }
 
-            const baseSkip = await accepted(`Deseja utilizar a BaseEntity na entity: `)
+            // Se --baseSkip for passado, pular BaseEntity (true)
+            // Se não for passado, usar BaseEntity por padrão (false)
+            const shouldSkipBaseEntity = baseSkip === true;
 
             const name = StringUtils.capitalizeFirstLetter(nameScaffold);
 
@@ -44,7 +44,7 @@ export function setupScaffoldCommand(program: Command) {
                 name: name,
                 title: nameScaffold,
                 postgres: postgres,
-                baseSkip: baseSkip,
+                baseSkip: shouldSkipBaseEntity,
                 repository: noRepository === undefined ? true : false,
                 content: fields,
             }
