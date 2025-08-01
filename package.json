@@ -4,8 +4,7 @@
   "description": "CLI para criar e estruturar projetos C# seguindo arquitetura em camadas",
   "main": "./dist/index.js",
   "bin": {
-    "nocsharp": "./dist/index.js",
-    "nc": "./dist/index.js"
+    "nocsharp": "./dist/index.js"
   },
   "preferGlobal": true,
   "scripts": {

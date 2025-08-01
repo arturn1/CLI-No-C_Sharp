@@ -16,10 +16,13 @@ import {
 } from '../commands';
 
 import { setupCleanCommand } from '../commands/clean-command';
+import * as packageJson from '../../package.json';
 
 
 export function setupCommands(program: Command) {
     program.name('nc');
+    program.version(packageJson.version, '-v, --version', 'output the current version');
+    
     setupInitCommand(program);
     setupInjectorBootStrapper(program);
     setupScaffoldCommand(program);
