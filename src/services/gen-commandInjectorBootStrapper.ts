@@ -62,7 +62,7 @@ export function genCommandInjectorBootStrapper(data: any) {
 
         fs.writeFileSync(filePath, newContent.join('\n'));
 
-        console.log('InjectorBootStrapper updated successfully!');
+        // InjectorBootStrapper atualizado com sucesso
     } catch (error) {
         console.error('Error generating InjectorBootStrapper:', error);
     }

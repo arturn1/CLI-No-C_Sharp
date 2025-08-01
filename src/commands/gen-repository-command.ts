@@ -18,7 +18,7 @@ export function setupRepositoryCommand(parentCommand: Command) {
         .alias('r')
         .description('Generate an repository')
         .action(async (nameRepository) => {
-            if (!isValidEntityName(nameRepository)) return console.log('O nome da entidade deve conter apenas letras e numeros.');
+            if (!isValidEntityName(nameRepository)) return;
 
             const repositoryData: Repository = {
                 name: StringUtils.capitalizeFirstLetter(nameRepository)
@@ -31,7 +31,7 @@ export function setupRepositoryCommand(parentCommand: Command) {
             const projectPath = path.join(currentDirectory, "Infrastructure", "Repositories");
             const entityPath = path.join(currentDirectory, "Domain", "Entities");
 
-            if (!isExists(entityPath, name + "Entity.cs")) return console.log("Favor criar a entity primeiramente");
+            if (!isExists(entityPath, name + "Entity.cs")) return;
 
             let isExist = true;
 

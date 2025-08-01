@@ -23,7 +23,15 @@ export function genHandler(data: Handler) {
             isUpdateCommand: elem.includes("Update")
         }))
 
-        const renderedTemplate = Mustache.render(template["content"], data);
+        // Check if needs collections using (placeholder for now, could be enhanced later)
+        const hasCollections = false; // Can be enhanced to check command types
+
+        const templateData = {
+            ...data,
+            hasCollections: hasCollections
+        };
+
+        const renderedTemplate = Mustache.render(template["content"], templateData);
 
         const fileName = data["name"] + "Handler.cs";
         const projectPath = path.join(currentDirectory, "Domain", "Handlers", fileName);
@@ -32,8 +40,7 @@ export function genHandler(data: Handler) {
             const fileExist = fs.existsSync(projectPath);
             fs.writeFileSync(projectPath, renderedTemplate);
 
-            if (fileExist) console.log(`Handler '${data["name"]}' Atualizado com sucesso.`);
-            else console.log(`Handler '${data["name"]}' Criada com sucesso.`);
+            // Handler processado
         } catch (error: any) {
             console.error('Invalid Local \n', error.message);
         }

@@ -22,7 +22,15 @@ export function genController(data: Controller) {
             isUpdateCommand: elem.includes("Update")
         }))
 
-        const renderedTemplate = Mustache.render(template["content"], data);
+        // Check if needs collections using (placeholder for now, could be enhanced later)
+        const hasCollections = false; // Can be enhanced to check command types
+
+        const templateData = {
+            ...data,
+            hasCollections: hasCollections
+        };
+
+        const renderedTemplate = Mustache.render(template["content"], templateData);
 
         const fileName = data["name"] + "Controller.cs";
         const projectPath = path.join(currentDirectory, "API", "Controllers", fileName);
@@ -32,8 +40,7 @@ export function genController(data: Controller) {
             const fileExist = fs.existsSync(projectPath);
             fs.writeFileSync(projectPath, renderedTemplate);
 
-            if (fileExist) console.log(`Controller '${data["name"]}' Atualizado com sucesso.`);
-            else console.log(`Controller '${data["name"]}' Criada com sucesso.`);
+            // Controller processado
         } catch (error: any) {
             console.error('Invalid Local \n', error.message);
         }

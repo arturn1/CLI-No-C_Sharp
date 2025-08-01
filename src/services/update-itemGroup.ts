@@ -28,7 +28,7 @@ export async function updateItemGroup(project: string, newData: string[]) {
 
         writeFileSync(filePath, newContent.join('\n'));
 
-        console.log(project, 'updated successfully!');
+        // Projeto atualizado com sucesso
     } catch (error) {
         console.error('Error generating Program.cs:', error);
     }

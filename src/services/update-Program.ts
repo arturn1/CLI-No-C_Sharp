@@ -38,7 +38,7 @@ export async function updateProgram(newData: Program) {
 
         writeFileSync(filePath, newContent.join('\n'));
 
-        console.log('Program.cs updated successfully!');
+        // Program.cs atualizado com sucesso
     } catch (error) {
         console.error('Error generating Program.cs:', error);
     }

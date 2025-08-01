@@ -56,7 +56,7 @@ export async function genCommandSolution(ProjectName: string) {
 
         writeFileSync(filePath[0], newContent.join('\n'));
 
-        console.log('Project add successfully!');
+        // Projeto adicionado com sucesso
     } catch (error) {
         console.error('Error generating ApplicationDbContext:', error);
     }

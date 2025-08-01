@@ -22,7 +22,7 @@ export function setupHandlerCommand(parentCommand: Command) {
         .description('Generate an handler')
         .option('--noRepository', 'This command create handler in repository target')
         .action(async (nameHandler, options) => {
-            if (!isValidEntityName(nameHandler)) return console.log('O nome da repository deve conter apenas letras e numeros.');
+            if (!isValidEntityName(nameHandler)) return;
 
             const { noRepository } = options;
 

@@ -42,7 +42,7 @@ export function genCommandApplicationDbContext(data: any) {
 
         fs.writeFileSync(filePath, newContent.join('\n'));
 
-        console.log('ApplicationDbContext updated successfully!');
+        // ApplicationDbContext atualizado com sucesso
     } catch (error) {
         console.error('Error generating ApplicationDbContext:', error);
     }

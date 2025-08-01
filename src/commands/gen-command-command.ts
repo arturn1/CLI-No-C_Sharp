@@ -20,9 +20,9 @@ export function setupCommandCommand(parentCommand: Command) {
         .option('--id', 'Generates the file with the type of management it will have')
         .action(async (nameCommand, fields, options) => {
             const command = StringUtils.capitalizeFirstLetter(nameCommand)
-            if (!isValidEntityName(nameCommand)) return console.log('O nome da command deve conter apenas letras e numeros.');
+            if (!isValidEntityName(nameCommand)) return;
 
-            if (!options.type) return console.log("Favor, informa o tipo da command");
+            if (!options.type) return;
             const type = StringUtils.capitalizeFirstLetter(options.type)
 
             const currentDirectory = process.cwd();

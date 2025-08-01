@@ -13,7 +13,7 @@ export function setupAzureAdd(parentCommand: Command) {
             const currentDirectory = process.cwd();
             const files = await fsPromises.readdir(currentDirectory);
 
-            if (files.includes("Azure")) return console.log("Azure already exist")
+            if (files.includes("Azure")) return;
 
             await addAzure();
 

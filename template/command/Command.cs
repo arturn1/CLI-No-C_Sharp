@@ -1,5 +1,11 @@
 using Domain.Commands.Contracts;
 using Domain.Validation;
+{{#hasCollections}}
+using System.Collections.Generic;
+{{/hasCollections}}
+{{#hasEntities}}
+using Domain.Entities;
+{{/hasEntities}}
 
 namespace Domain.Commands 
 {

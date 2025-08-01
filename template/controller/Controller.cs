@@ -6,6 +6,9 @@ using Domain.Repositories;
 using Application.Dictionary;
 using API.Controllers.Contract;
 using Microsoft.AspNetCore.Mvc;
+{{#hasCollections}}
+using System.Collections.Generic;
+{{/hasCollections}}
 
 namespace API.Controllers
 {

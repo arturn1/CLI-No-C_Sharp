@@ -18,8 +18,8 @@ export function setupEntityCommand(parentCommand: Command) {
         .option('--postgres <postgreSQLFields>', 'Specify PostgreSQL fields for the entity')
         .option('--baseSkip', 'This command ignore Base Entity')
         .action(async (nameEntity, fields, options) => {
-            if (!isValidEntityName(nameEntity)) return console.log('O nome da entidade deve conter apenas letras e numeros.');
-            if (!fields.length) return console.log('A entidade precisa ter pelo menos uma declaracao.');
+            if (!isValidEntityName(nameEntity)) return;
+            if (!fields.length) return;
 
             const currentDirectory = process.cwd();
             const fileName = StringUtils.capitalizeFirstLetter(nameEntity + "Entity.cs");

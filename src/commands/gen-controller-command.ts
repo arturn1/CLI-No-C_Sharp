@@ -17,7 +17,7 @@ export function setupControllerCommand(parentCommand: Command) {
         .alias('c')
         .description('Generate an controller')
         .action(async (nameController, fields) => {
-            if (!isValidEntityName(nameController)) return console.log('O nome da entidade deve conter apenas letras e numeros.');
+            if (!isValidEntityName(nameController)) return;
 
             const controllerData: Generation = {
                 name: StringUtils.capitalizeFirstLetter(nameController),
@@ -49,8 +49,6 @@ export function setupControllerCommand(parentCommand: Command) {
                 const isExistHandler = isExists(handlerPath, fileNameHandler)
 
                 if (!isExistHandler) {
-                    console.log("Por favor, criar o Handler antes de proseguir com essa configuração.")
-
                     return;
                 };
 

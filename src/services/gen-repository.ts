@@ -26,8 +26,7 @@ export function genRepository(data: Repository) {
             let fileExist = fs.existsSync(projectPath);
             fs.writeFileSync(projectPath, renderedTemplate);
 
-            if (fileExist) console.log(`Repository '${data["name"]}' Atualizado com sucesso.`);
-            else console.log(`Repository '${data["name"]}' Criada com sucesso.`);
+            // Repository processado
         } catch (error: any) {
             console.error('Invalid Local \n', error.message);
         }
@@ -36,8 +35,7 @@ export function genRepository(data: Repository) {
             let fileExist = fs.existsSync(projectPathInterface);
             fs.writeFileSync(projectPathInterface, renderedTemplateInterface);
 
-            if (fileExist) console.log(`Repository Interface '${data["name"]}' Atualizado com sucesso.`);
-            else console.log(`Repository Interface '${data["name"]}' Criada com sucesso.`);
+            // Repository Interface processado
         } catch (error: any) {
             console.error('Invalid Local \n', error.message);
         }

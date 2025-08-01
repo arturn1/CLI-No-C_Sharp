@@ -13,7 +13,7 @@ export function setupIdentityAdd(parentCommand: Command) {
             const currentDirectory = process.cwd();
             const files = await fsPromises.readdir(currentDirectory);
 
-            if (files.includes("Identity")) return console.log("Identity already exist")
+            if (files.includes("Identity")) return;
 
             await addIdentity();
 

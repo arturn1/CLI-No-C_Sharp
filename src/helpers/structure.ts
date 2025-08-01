@@ -67,17 +67,22 @@ export class Structure {
     }
 
     private isPotentialEntityType(type: string): boolean {
-        // Check if the type starts with uppercase (likely a class/entity)
+        // Check if the type starts with a letter (uppercase or lowercase)
         // and doesn't contain special characters that would indicate it's not a class name
-        return /^[A-Z][a-zA-Z0-9]*$/.test(type);
+        // Also exclude common generic type parameters like T, TKey, TValue
+        return /^[a-zA-Z][a-zA-Z0-9]*$/.test(type) && 
+               !['T', 'TKey', 'TValue', 'TEntity'].includes(type);
     }
 
     private processEntityType(type: string): string {
-        // Convert entity name to proper EntityName format if needed
-        // For example: User -> UserEntity (if following the pattern)
+        // Convert entity name to proper EntityName format
+        // For example: users -> UsersEntity, User -> UserEntity
         // Add a using statement for Domain.Entities if referencing other entities
         this.usings.add('using Domain.Entities;');
-        return type + "Entity";
+        
+        // Convert to PascalCase and add Entity suffix
+        const pascalCase = type.charAt(0).toUpperCase() + type.slice(1).toLowerCase();
+        return pascalCase + "Entity";
     }
 
     public isGenericType(type: string): boolean {

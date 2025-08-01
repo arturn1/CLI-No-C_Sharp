@@ -71,8 +71,7 @@ export function genEntity(data: Entity) {
             const fileExist = fs.existsSync(projectPath);
             fs.writeFileSync(projectPath, renderedTemplate);
 
-            if (fileExist) console.log(`🔄 Entity '${data["name"]}' updated successfully`);
-            else console.log(`✅ Entity '${data["name"]}' created successfully`);
+            // Entity processada
         } catch (error: any) {
             console.error('❌ Invalid Local \n', error.message);
         }

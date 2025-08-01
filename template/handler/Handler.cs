@@ -5,6 +5,9 @@ using Domain.Handlers.Contracts;
 using Domain.Helpers;
 using Domain.Repositories;
 using System.Net;
+{{#hasCollections}}
+using System.Collections.Generic;
+{{/hasCollections}}
 
 namespace Domain.Handlers
 {

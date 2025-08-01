@@ -15,12 +15,15 @@ import {
     setupIdentityAdd,
 } from '../commands';
 
+import { setupCleanCommand } from '../commands/clean-command';
+
 
 export function setupCommands(program: Command) {
     program.name('nc');
     setupInitCommand(program);
     setupInjectorBootStrapper(program);
     setupScaffoldCommand(program);
+    setupCleanCommand(program);
 
     const genCommand = program.command('g');
     setupEntityCommand(genCommand);

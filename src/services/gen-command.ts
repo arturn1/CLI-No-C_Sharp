@@ -17,13 +17,20 @@ export function genCommand(data: Command) {
         const template = readFile(rootFolderPath);
 
         const entity = new Structure(data["content"]);
+        
+        // Get required usings and check for collections/entities
+        const customUsings = entity.getRequiredUsings();
+        const hasCollections = customUsings.some(using => using.includes('Collections.Generic'));
+        const hasEntities = customUsings.some(using => using.includes('Domain.Entities'));
 
         const renderedTemplate = Mustache.render(template["content"], {
             name: data["type"] + data["name"] + "Command",
             id: data["id"],
             structureConstructor: entity.structureConstructor(),
             structureEntityThis: "\n" + entity.structureEntityThis(),
-            structureEntityPublic: "\n" + entity.structureEntityPublic()
+            structureEntityPublic: "\n" + entity.structureEntityPublic(),
+            hasCollections: hasCollections,
+            hasEntities: hasEntities
         }, {}, {
             escape: (text) => text  // Desabilitar escape HTML
         })
@@ -41,8 +48,7 @@ export function genCommand(data: Command) {
             const fileExist = fs.existsSync(projectPath);
             fs.writeFileSync(projectPath, renderedTemplate);
 
-            if (fileExist) console.log(`Command ${data["type"]} '${data["name"]}' Atualizado com sucesso.`);
-            else console.log(`Command ${data["type"]} '${data["name"]}' Criada com sucesso.`);
+            // Command processado
         } catch (error: any) {
             console.error('Invalid Local \n', error.message);
         }

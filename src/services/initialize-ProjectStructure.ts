@@ -76,7 +76,7 @@ export function initializeProjectStructure(nomeProject: string) {
             }
         })
 
-        console.log(`Projeto '${StringUtils.capitalizeFirstLetter(nomeProject)}' inicializado com sucesso.`);
+        // Projeto inicializado
     } catch (error) {
         console.error('Erro ao inicializar o projeto:', error);
     }

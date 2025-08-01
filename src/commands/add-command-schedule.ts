@@ -14,7 +14,7 @@ export function setupScheuleAdd(parentCommand: Command) {
             const currentDirectory = process.cwd();
             const files = await fsPromises.readdir(currentDirectory);
 
-            if (files.includes("Schedule")) return console.log("Schedule already exist")
+            if (files.includes("Schedule")) return;
 
             await addSchedule();
 
