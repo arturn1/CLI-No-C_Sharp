@@ -27,7 +27,7 @@ export function setupCommandCommand(parentCommand: Command) {
 
             const currentDirectory = process.cwd();
             const fileName = `${type}${command}Command.cs`;
-            const projectPath = path.join(currentDirectory, "Domain", 'Commands', `${command}Commands`);
+            const projectPath = path.join(currentDirectory, "Core", 'Commands', `${command}Commands`);
 
             let isExist = true;
 

@@ -1,4 +1,4 @@
-namespace Domain.Helpers
+namespace Core.Helpers
 {
     public interface IMapper
     {

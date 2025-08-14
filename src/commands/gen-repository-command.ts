@@ -29,7 +29,7 @@ export function setupRepositoryCommand(parentCommand: Command) {
             const currentDirectory = process.cwd();
             const fileName = name + "Repository.cs";
             const projectPath = path.join(currentDirectory, "Infrastructure", "Repositories");
-            const entityPath = path.join(currentDirectory, "Domain", "Entities");
+            const entityPath = path.join(currentDirectory, "Core", "Entities");
 
             if (!isExists(entityPath, name + "Entity.cs")) return;
 

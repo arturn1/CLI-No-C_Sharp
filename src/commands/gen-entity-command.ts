@@ -23,7 +23,7 @@ export function setupEntityCommand(parentCommand: Command) {
 
             const currentDirectory = process.cwd();
             const fileName = StringUtils.capitalizeFirstLetter(nameEntity + "Entity.cs");
-            const projectPath = path.join(currentDirectory, "Domain", "Entities");
+            const projectPath = path.join(currentDirectory, "Core", "Entities");
 
             let isExist = true;
 

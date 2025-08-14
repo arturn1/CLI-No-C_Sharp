@@ -1,13 +1,13 @@
-using Domain.Commands.Contracts;
-using Domain.Validation;
+using Core.Commands.Contracts;
+using Core.Validation;
 {{#hasCollections}}
 using System.Collections.Generic;
 {{/hasCollections}}
 {{#hasEntities}}
-using Domain.Entities;
+using Core.Entities;
 {{/hasEntities}}
 
-namespace Domain.Commands 
+namespace Core.Commands 
 {
 
     public class {{name}} : ValidatableTypes, ICommand

@@ -1,7 +1,7 @@
 using Application.Dictionary;
-using Domain.Handlers;
-using Domain.Helpers;
-using Domain.Repositories;
+using Application.Handlers;
+using Core.Helpers;
+using Core.Repositories;
 using Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -21,7 +21,7 @@ export function genCommand(data: Command) {
         // Get required usings and check for collections/entities
         const customUsings = entity.getRequiredUsings();
         const hasCollections = customUsings.some(using => using.includes('Collections.Generic'));
-        const hasEntities = customUsings.some(using => using.includes('Domain.Entities'));
+        const hasEntities = customUsings.some(using => using.includes('Core.Entities'));
 
         const renderedTemplate = Mustache.render(template["content"], {
             name: data["type"] + data["name"] + "Command",
@@ -38,9 +38,9 @@ export function genCommand(data: Command) {
         const currentDirectory = process.cwd();
         const fileName = data["type"] + data["name"] + "Command.cs"
         const encapsulation = data["name"] + "Commands"
-        const pathCommand = path.join(currentDirectory, "Domain", "Commands")
+        const pathCommand = path.join(currentDirectory, "Core", "Commands")
 
-        fs.mkdirSync(`${currentDirectory}/Domain/Commands/${encapsulation}`, { recursive: true });
+        fs.mkdirSync(`${currentDirectory}/Core/Commands/${encapsulation}`, { recursive: true });
 
         const projectPath = path.join(pathCommand, encapsulation, fileName);
 

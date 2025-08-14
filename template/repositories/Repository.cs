@@ -1,5 +1,5 @@
-using Domain.Entities;
-using Domain.Repositories;
+using Core.Entities;
+using Core.Repositories;
 using Infrastructure.Data;
 using Infrastructure.Repositories.Contracts;
 

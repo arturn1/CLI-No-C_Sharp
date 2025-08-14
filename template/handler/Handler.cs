@@ -1,15 +1,15 @@
-using Domain.Commands;
-using Domain.Commands.Contracts;
-using Domain.Entities;
-using Domain.Handlers.Contracts;
-using Domain.Helpers;
-using Domain.Repositories;
+using Core.Commands;
+using Core.Commands.Contracts;
+using Core.Entities;
+using Core.Handlers.Contracts;
+using Core.Helpers;
+using Core.IRepositories;
 using System.Net;
 {{#hasCollections}}
 using System.Collections.Generic;
 {{/hasCollections}}
 
-namespace Domain.Handlers
+namespace Core.Handlers
 {
     public class {{name}}Handler{{#command}}{{^isFirst}}:{{/isFirst}}{{#isFirst}},{{else}}{{/isFirst}} IHandler<{{commandName}}>{{/command}}
     {

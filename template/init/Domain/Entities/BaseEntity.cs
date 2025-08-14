@@ -1,6 +1,6 @@
-using Domain.Validation;
+using Core.Validation;
 
-namespace Domain.Entities
+namespace Core.Entities
 {
     public class BaseEntity : Validatable
     {

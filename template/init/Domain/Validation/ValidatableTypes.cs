@@ -1,4 +1,4 @@
-namespace Domain.Validation
+namespace Core.Validation
 {
     public class ValidatableTypes : Validatable
     {

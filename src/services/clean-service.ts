@@ -23,18 +23,18 @@ export class CleanService {
         // Lista de arquivos/diretórios que serão removidos
         const filesToRemove = [
             // Entity
-            `Domain/Entities/${formattedName}Entity.cs`,
+            `Core/Entities/${formattedName}Entity.cs`,
             
             // Commands
-            `Domain/Commands/${formattedName}Commands/Create${formattedName}Command.cs`,
-            `Domain/Commands/${formattedName}Commands/Update${formattedName}Command.cs`,
-            `Domain/Commands/${formattedName}Commands`,
+            `Core/Commands/${formattedName}Commands/Create${formattedName}Command.cs`,
+            `Core/Commands/${formattedName}Commands/Update${formattedName}Command.cs`,
+            `Core/Commands/${formattedName}Commands`,
             
             // Handler
-            `Domain/Handlers/${formattedName}Handler.cs`,
+            `Application/Handlers/${formattedName}Handler.cs`,
             
             // Repository Interface
-            `Domain/Repositories/I${formattedName}Repository.cs`,
+            `Core/Repositories/I${formattedName}Repository.cs`,
             
             // Repository Implementation
             `Infrastructure/Repositories/${formattedName}Repository.cs`,
@@ -101,10 +101,10 @@ export class CleanService {
         
         // Diretórios que serão limpos completamente
         const directoriesToClean = [
-            'Domain/Commands',
-            'Domain/Handlers',
-            'Domain/Entities',
-            'Domain/Repositories',
+            'Core/Commands',
+            'Application/Handlers',
+            'Core/Entities',
+            'Core/IRepositories',
             'Infrastructure/Repositories',
             'API/Controllers'
         ];
@@ -231,11 +231,11 @@ export class CleanService {
             const formattedName = StringUtils.capitalizeFirstLetter(entityName);
             
             const filesToCheck = [
-                `Domain/Entities/${formattedName}Entity.cs`,
-                `Domain/Commands/${formattedName}Commands/Create${formattedName}Command.cs`,
-                `Domain/Commands/${formattedName}Commands/Update${formattedName}Command.cs`,
-                `Domain/Handlers/${formattedName}Handler.cs`,
-                `Domain/Repositories/I${formattedName}Repository.cs`,
+                `Core/Entities/${formattedName}Entity.cs`,
+                `Core/Commands/${formattedName}Commands/Create${formattedName}Command.cs`,
+                `Core/Commands/${formattedName}Commands/Update${formattedName}Command.cs`,
+                `Application/Handlers/${formattedName}Handler.cs`,
+                `Core/IRepositories/I${formattedName}Repository.cs`,
                 `Infrastructure/Repositories/${formattedName}Repository.cs`,
                 `API/Controllers/${formattedName}Controller.cs`
             ];
@@ -249,10 +249,10 @@ export class CleanService {
         } else {
             // Listar todos os arquivos gerados
             const directoriesToScan = [
-                'Domain/Entities',
-                'Domain/Commands',
-                'Domain/Handlers',
-                'Domain/Repositories',
+                'Core/Entities',
+                'Core/Commands',
+                'Application/Handlers',
+                'Core/Repositories',
                 'Infrastructure/Repositories',
                 'API/Controllers'
             ];

@@ -168,7 +168,7 @@ Application:
 - Interfaces: Definições de interfaces para serviços que serão implementados na camada de serviços.
 - Services: Implementações de serviços que realizam as operações de negócios e interagem com a camada de domínio.
 
-Domain:
+Core:
 
 - Commands: Definição de comandos que representam ações na aplicação.
 - Entities: Modelos de dados (entidades) representando objetos de domínio.
@@ -353,7 +353,7 @@ O projeto gerado seguirá a seguinte estrutura:
   Controllers: Controladores responsáveis por receber solicitações HTTP.
   Properties: Arquivos relacionados às propriedades do projeto.
 
-- Domain:
+- Core:
 
   Commands: Definição de comandos que representam ações na aplicação.
   Entities: Modelos de dados (entidades) representando objetos de domínio.

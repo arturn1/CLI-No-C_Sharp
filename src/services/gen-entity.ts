@@ -59,7 +59,7 @@ export function genEntity(data: Entity) {
 
         const currentDirectory = process.cwd();
         const fileName = data["name"] + "Entity.cs"
-        const projectPath = path.join(currentDirectory, "Domain", "Entities", fileName);
+        const projectPath = path.join(currentDirectory, "Core", "Entities", fileName);
 
         // Ensure directory exists
         const dir = path.dirname(projectPath);

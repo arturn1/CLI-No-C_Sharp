@@ -38,13 +38,13 @@ export function setupControllerCommand(parentCommand: Command) {
 
             if (!isExist) return;
 
-            const commandsPath = path.join(currentDirectory, "Domain", 'Commands', `${name}Commands`);
+            const commandsPath = path.join(currentDirectory, "Core", 'Commands', `${name}Commands`);
 
             let content = false;
             if (isExists(commandsPath)) content = await accepted(`Deseja utilizar os commands existente na pasta Commands/${name}`);
 
             if (content) {
-                const handlerPath = path.join(currentDirectory, "Domain", "Handlers");
+                const handlerPath = path.join(currentDirectory, "Application", "Handlers");
                 const fileNameHandler = name + "Handler.cs";
                 const isExistHandler = isExists(handlerPath, fileNameHandler)
 

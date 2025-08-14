@@ -1,8 +1,8 @@
 using System.Net;
-using Domain.Commands;
-using Domain.Entities;
-using Domain.Handlers;
-using Domain.Repositories;
+using Core.Commands;
+using Core.Entities;
+using Core.Handlers;
+using Core.IRepositories;
 using Application.Dictionary;
 using API.Controllers.Contract;
 using Microsoft.AspNetCore.Mvc;

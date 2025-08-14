@@ -38,14 +38,14 @@ export function setupHandlerCommand(parentCommand: Command) {
 
             let isExist = true;
 
-            const projectPath = path.join(currentDirectory, "Domain", "Handlers");
+            const projectPath = path.join(currentDirectory, "Application", "Handlers");
             const fileName = name + "Handler.cs";
 
             if (isExists(projectPath, fileName)) isExist = await accepted(`O Handler ${name} existe neste projeto, deseja substituir: `);
 
             if (!isExist) return;
 
-            const commandsPath = path.join(currentDirectory, "Domain", 'Commands', `${name}Commands`);
+            const commandsPath = path.join(currentDirectory, "Core", 'Commands', `${name}Commands`);
 
             let content = false;
             if (isExists(commandsPath)) content = await accepted(`Deseja utilizar os commands existente na pasta Commands/${name}`);

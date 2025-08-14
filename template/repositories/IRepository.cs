@@ -1,7 +1,7 @@
-using Domain.Entities;
-using Domain.Repositories.Contracts;
+using Core.Entities;
+using Core.Repositories.Contracts;
 
-namespace Domain.Repositories
+namespace Core.Repositories
 {
     public interface I{{name}}Repository : IRepositoryBase<{{name}}Entity> { }
 }

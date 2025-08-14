@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domain.Validation
+namespace Core.Validation
 {
     public class Validatable
     {

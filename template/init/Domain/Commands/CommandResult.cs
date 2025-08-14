@@ -1,8 +1,8 @@
-using Domain.Commands.Contracts;
+using Core.Commands.Contracts;
 using System.Collections.Generic;
 using System.Net;
 
-namespace Domain.Commands
+namespace Core.Commands
 {
     public class CommandResult : ICommandResult
     {

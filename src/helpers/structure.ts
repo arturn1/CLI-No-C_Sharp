@@ -77,8 +77,8 @@ export class Structure {
     private processEntityType(type: string): string {
         // Convert entity name to proper EntityName format
         // For example: users -> UsersEntity, User -> UserEntity
-        // Add a using statement for Domain.Entities if referencing other entities
-        this.usings.add('using Domain.Entities;');
+        // Add a using statement for Core.Entities if referencing other entities
+        this.usings.add('using Core.Entities;');
         
         // Convert to PascalCase and add Entity suffix
         const pascalCase = type.charAt(0).toUpperCase() + type.slice(1).toLowerCase();

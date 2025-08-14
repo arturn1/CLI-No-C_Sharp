@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 {{/database}}
 
-namespace Domain.Entities
+namespace Core.Entities
 {
     {{#database}}{{{database}}}{{/database}}
     public class {{name}} {{#baseSkip}}{{/baseSkip}}{{^baseSkip}}: BaseEntity {{/baseSkip}}

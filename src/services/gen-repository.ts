@@ -20,7 +20,7 @@ export function genRepository(data: Repository) {
         const currentDirectory = process.cwd();
         const fileName = data["name"] + "Repository.cs";
         const projectPath = path.join(currentDirectory, "Infrastructure", "Repositories", fileName);
-        const projectPathInterface = path.join(currentDirectory, "Domain", "Repositories", "I" + fileName);
+        const projectPathInterface = path.join(currentDirectory, "Core", "IRepositories", "I" + fileName);
 
         try {
             let fileExist = fs.existsSync(projectPath);

@@ -1,4 +1,4 @@
-namespace Domain.Commands.Contracts
+namespace Core.Commands.Contracts
 {
     public interface ICommandResult
     {

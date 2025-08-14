@@ -34,7 +34,7 @@ export function genHandler(data: Handler) {
         const renderedTemplate = Mustache.render(template["content"], templateData);
 
         const fileName = data["name"] + "Handler.cs";
-        const projectPath = path.join(currentDirectory, "Domain", "Handlers", fileName);
+        const projectPath = path.join(currentDirectory, "Application", "Handlers", fileName);
 
         try {
             const fileExist = fs.existsSync(projectPath);

@@ -1,6 +1,6 @@
-using Domain.Commands.Contracts;
+using Core.Commands.Contracts;
 
-namespace Domain.Handlers.Contracts
+namespace Core.Handlers.Contracts
 {
     public interface IHandler<T> where T : ICommand
     {
